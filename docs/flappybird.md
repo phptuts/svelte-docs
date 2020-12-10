@@ -3,6 +3,7 @@
 ## Final Demo
 
 [Demo](https://phptuts.github.io/flappy-bird/)
+
 ![step40](images/flappybird/step40.png)
 
 ## Steps
