@@ -1,0 +1,10 @@
+site_name: Svelte Tutorials
+nav:
+  - Home: index.md
+  - Flappy Bird: flappybird.md
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_languages: ["svelte", "javascript", "html", "css", "typescript"]
+extra_css:
+  - css/style.css
