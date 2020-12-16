@@ -1,10 +1,20 @@
-# How to build a flappy bird game in svelte
+# How to build a flappy bird game in svelte with typescript
+
+## Youtube Video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nhrYBoVI8pQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Final Demo
 
+[Demo](https://github.com/phptuts/fb-yt)
+
+[Code](https://phptuts.github.io/fb-yt/)
+
+## Other Demo
+
 [Demo](https://phptuts.github.io/flappy-bird/)
 
-![step40](images/flappybird/step40.png)
+[Code](https://github.com/phptuts/flappy-bird/)
 
 ## Steps
 
@@ -63,7 +73,7 @@ export interface Frame {
 6\. Create a game class. Is is what is used to generate the frames and is where all of our game logic will be stored. For now our game controller will take in a width and height value.
 
 ```typescript
-class GameController {}
+export class GameController {}
 ```
 
 7\. Let's create a constructor that takes in width, height as public readonly variables. We'll also create private class variables that will store the frame and velocity.
@@ -74,7 +84,7 @@ class GameController {
 
   private velocity = 0;
 
-  constructor(public readonly height = 800, public width = 400) {}
+  constructor(public readonly height = 800, public readonly width = 400) {}
 }
 ```
 
@@ -86,7 +96,7 @@ export class GameController {
 
   private velocity = 0;
 
-  constructor(public readonly height = 800, public width = 400) {}
+  constructor(public readonly height = 800, public readonly width = 400) {}
 
   public newGame() {
     this.frame = {
@@ -225,7 +235,7 @@ private createPipe(show: boolean): PipePair {
         top: height + this.pipeGap,
         height: this.height,
       },
-      left: this.width + this.pipeWidth,
+      left: this.width - this.pipeWidth,
       width: this.pipeWidth,
       show,
     };
