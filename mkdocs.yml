@@ -2,6 +2,7 @@ site_name: Svelte Tutorials
 nav:
   - Home: index.md
   - Flappy Bird: flappybird.md
+  - Web Components: webcomponents.md
 theme:
   name: readthedocs
   highlightjs: true
