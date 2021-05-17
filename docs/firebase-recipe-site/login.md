@@ -1,5 +1,7 @@
 # Sveltekit Firebase Authenication Recipe Site
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OTxIcU_2Qos" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 - [Code](https://github.com/phptuts/firebase-sveltekit-recipe-site)
 - Documentation for [SvelteKit](https://kit.svelte.dev/)
 - Documentation for [Firebase Auth](https://firebase.google.com/docs/auth/web/start)
