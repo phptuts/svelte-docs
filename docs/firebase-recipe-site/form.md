@@ -1,43 +1,42 @@
-1. Install Svelte Form Libary
+1\. Install Svelte Form Libary
 
 ```
 npm i svelte-forms-lib yup
 ```
 
-2. Clean up the index.svelte page
+2\. Clean up the index.svelte page
 
-3. Add Bootstrap app.html
+3\. Add Bootstrap app.html
 
-` <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
-``
+```
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" />
+```
 
-````
-
-4. Create the starter form in our add-recipe.svelte pageg.
+4\. Create the starter form in our add-recipe.svelte pageg.
 
 ```typescript
 import * as yup from "yup";
-  import { createForm } from "svelte-forms-lib";
-  import { Row, Col, Button, FormGroup, Input, Label } from "sveltestrap/src";
+import { createForm } from "svelte-forms-lib";
+import { Row, Col, Button, FormGroup, Input, Label } from "sveltestrap/src";
 
-  const schema = yup.object().shape({
-    title: yup.string().required().min(4).max(5),
-    description: yup.string().required().min(10).max(1000),
-  });
+const schema = yup.object().shape({
+  title: yup.string().required().min(4).max(5),
+  description: yup.string().required().min(10).max(1000),
+});
 
-  const { form, errors, handleChange, handleSubmit } = createForm({
-    initialValues: {
-      title: "",
-      description: "",
-    },
-    validationSchema: schema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values));
-    },
-  });
-````
+const { form, errors, handleChange, handleSubmit } = createForm({
+  initialValues: {
+    title: "",
+    description: "",
+  },
+  validationSchema: schema,
+  onSubmit: (values) => {
+    alert(JSON.stringify(values));
+  },
+});
+```
 
-5. Create the HTML
+5\. Create the HTML
 
 ```html
 <Row>
