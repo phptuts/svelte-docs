@@ -155,56 +155,61 @@ const { form, errors, handleChange, handleSubmit } = createForm({
   <Row>
     <Col sm={5}>
       <FormGroup>
-        <Label for={`ingredients[${i}][name]`}>Name</Label>
+        <Label for={`ingredients_${i}_name`}>Name</Label>
         <Input
           on:change={handleChange}
-          bind:value={$form.ingredients[i].name}
-          invalid={$errors.ingredients[i].name.length > 0}
+          bind:value={$form.ingredients[i]["name"]}
+          invalid={$errors.ingredients[i]["name"] &&
+            $errors.ingredients[i]["name"].length > 0}
           type="text"
-          name={`ingredients[${i}][name]`}
-          id={`ingredients[${i}][name]`}
+          name={`ingredients[${i}].name`}
+          id={`ingredients_${i}_name`}
           placeholder="Name"
         />
-        {#if $errors.ingredients[i]?.name}
-          <div class="invalid-feedback">{$errors.ingredients[i].name}</div>
+        {#if $errors.ingredients[i]["name"]}
+          <div class="invalid-feedback">{$errors.ingredients[i]["name"]}</div>
         {/if}
       </FormGroup>
     </Col>
-    <Col sm={3}>
+    <Col sm={4}>
       <FormGroup>
-        <Label for={`ingredients[${i}][units]`}>Units</Label>
+        <Label for={`ingredients_${i}_units`}>Units</Label>
         <Input
           on:change={handleChange}
-          bind:value={$form.ingredients[i].units}
+          bind:value={$form.ingredients[i]["units"]}
           type="select"
-          name={`ingredients[${i}][units]`}
-          id={`ingredients[${i}][units]`}
+          name={`ingredients[${i}].units`}
+          id={`ingredients_${i}_units`}
         >
-          <option>Pounds</option>
+          <option value="none">None</option>
+          <option value="pounds">Pounds</option>
+          <option value="ounces">Ounces</option>
+          <option value="cups">Cups</option>
         </Input>
       </FormGroup>
     </Col>
 
-    <Col sm={1}>
+    <Col sm={2}>
       <FormGroup>
-        <Label for={`ingredients[${i}][amount]`}>Amount</Label>
+        <Label for={`ingredients_${i}_amount`}>Amount</Label>
         <Input
           on:change={handleChange}
-          bind:value={$form.ingredients[i].amount}
-          invalid={$errors.ingredients[i].amount.length > 0}
+          bind:value={$form.ingredients[i]["amount"]}
+          invalid={$errors.ingredients[i]["amount"] &&
+            $errors.ingredients[i]["amount"].length > 0}
           type="number"
           min="1"
           max="300000"
-          name={`ingredients[${i}][amount]`}
-          id={`ingredients[${i}][amount]`}
+          name={`ingredients[${i}]amount`}
+          id={`ingredients_${i}_amount`}
         />
-        {#if $errors.ingredients[i].amount}
-          <div class="invalid-feedback">{$errors.ingredients[i].amount}</div>
+        {#if $errors.ingredients[i]["amount"]}
+          <div class="invalid-feedback">{$errors.ingredients[i]["amount"]}</div>
         {/if}
       </FormGroup>
     </Col>
     <Col sm={1}>
-<i class="fas fa-trash"></i>
+      <i class="fas fa-trash" on:click={() => removeIngredient(i)} />
     </Col>
   </Row>
 {/each}
