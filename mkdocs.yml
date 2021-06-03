@@ -5,6 +5,7 @@ nav:
   - Web Components: webcomponents.md
   - SvelteKit Firebase Auth: firebase-recipe-site/login.md
   - SvelteKit Firebase SSR: firebase-recipe-site/ssr.md
+  - Sveltekit Forms: firebase-recipe-site/forms.md
 
 theme:
   name: readthedocs

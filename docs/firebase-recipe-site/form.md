@@ -1,3 +1,21 @@
+# How to use svelte-form-libs, sveltestrap and firestore to save data.
+
+## Code
+
+https://github.com/phptuts/firebase-sveltekit-recipe-site/tree/svelte-form-yt
+
+## Video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ICRKutWbWRs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Libraries
+
+- [Svelte-Form-Libs](https://svelte-forms-lib-sapper-docs.vercel.app/)
+- [Yup](https://github.com/jquense/yup)
+- [sveltestrap](https://sveltestrap.js.org/)
+
+## Instructions
+
 1\. Install Svelte Form Libary
 
 ```
