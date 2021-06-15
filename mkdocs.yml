@@ -5,8 +5,8 @@ nav:
   - Web Components: webcomponents.md
   - SvelteKit Firebase Auth: firebase-recipe-site/login.md
   - SvelteKit Firebase SSR: firebase-recipe-site/ssr.md
-  - Sveltekit Forms: firebase-recipe-site/form.md
-  - Sveltekit FireStorage: firebase-recipe-site/upload-picture.md
+  - SvelteKit Forms: firebase-recipe-site/form.md
+  - SvelteKit FireStorage: firebase-recipe-site/upload-picture.md
 
 theme:
   name: readthedocs
@@ -14,3 +14,4 @@ theme:
   hljs_languages: ["svelte", "javascript", "html", "css", "typescript"]
 extra_css:
   - css/style.css
+site_url: https://phptuts.github.io/svelte-docs/
