@@ -6,6 +6,7 @@ nav:
   - SvelteKit Firebase Auth: firebase-recipe-site/login.md
   - SvelteKit Firebase SSR: firebase-recipe-site/ssr.md
   - Sveltekit Forms: firebase-recipe-site/form.md
+  - Sveltekit FireStorage: firebase-recipe-site/upload-picture.md
 
 theme:
   name: readthedocs
