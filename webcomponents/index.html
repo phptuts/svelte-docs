@@ -1,0 +1,734 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://phptuts.github.io/svelte-docs/webcomponents/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+    
+    
+      
+        <title>Web Components - Svelte Tutorials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#web-components-in-svelte" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Svelte Tutorials" class="md-header__button md-logo" aria-label="Svelte Tutorials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Svelte Tutorials
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Web Components
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Svelte Tutorials" class="md-nav__button md-logo" aria-label="Svelte Tutorials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Svelte Tutorials
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flappybird/" class="md-nav__link">
+        Flappy Bird
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Web Components
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Web Components
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    Video
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demos" class="md-nav__link">
+    Demos
+  </a>
+  
+    <nav class="md-nav" aria-label="Demos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    HTML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#angular" class="md-nav__link">
+    Angular
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#react" class="md-nav__link">
+    React
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vue" class="md-nav__link">
+    Vue
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-create-a-web-component-with-svelte" class="md-nav__link">
+    How to create a web component with Svelte
+  </a>
+  
+    <nav class="md-nav" aria-label="How to create a web component with Svelte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    Note
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-svelte-component-in-angular" class="md-nav__link">
+    How to use svelte component in Angular
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-svelte-component-in-react" class="md-nav__link">
+    How to use svelte component in React
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-svelte-component-in-vue" class="md-nav__link">
+    How to use svelte component in Vue
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firebase-recipe-site/login/" class="md-nav__link">
+        SvelteKit Firebase Auth
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firebase-recipe-site/ssr/" class="md-nav__link">
+        SvelteKit Firebase SSR
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firebase-recipe-site/form/" class="md-nav__link">
+        SvelteKit Forms
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firebase-recipe-site/upload-picture/" class="md-nav__link">
+        SvelteKit FireStorage
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    Video
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demos" class="md-nav__link">
+    Demos
+  </a>
+  
+    <nav class="md-nav" aria-label="Demos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    HTML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#angular" class="md-nav__link">
+    Angular
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#react" class="md-nav__link">
+    React
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vue" class="md-nav__link">
+    Vue
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-create-a-web-component-with-svelte" class="md-nav__link">
+    How to create a web component with Svelte
+  </a>
+  
+    <nav class="md-nav" aria-label="How to create a web component with Svelte">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    Note
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-svelte-component-in-angular" class="md-nav__link">
+    How to use svelte component in Angular
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-svelte-component-in-react" class="md-nav__link">
+    How to use svelte component in React
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-svelte-component-in-vue" class="md-nav__link">
+    How to use svelte component in Vue
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="web-components-in-svelte">Web Components in Svelte</h1>
+<h2 id="video">Video</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RbTM785zhG4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="demos">Demos</h2>
+<h3 id="html">HTML</h3>
+<p><a href="https://phptuts.github.io/svelte-webcomponets-yt/">HTML Svelte Demo</a></p>
+<p><a href="https://github.com/phptuts/svelte-webcomponets-yt">HTML Svelte Demo Code</a></p>
+<h3 id="angular">Angular</h3>
+<p><a href="https://phptuts.github.io/angular-svelte-webcomponents-yt/">Angular Demo</a></p>
+<p><a href="https://github.com/phptuts/angular-svelte-webcomponents-yt">Angular Code</a></p>
+<h3 id="react">React</h3>
+<p><a href="https://github.com/phptuts/react-svelte-webcomponent-yt">React Demo</a></p>
+<p><a href="https://phptuts.github.io/react-svelte-webcomponent-yt/">React Code</a></p>
+<h3 id="vue">Vue</h3>
+<p><a href="https://phptuts.github.io/vue-svelte-webcomponent-yt/">Vue Demo</a></p>
+<p><a href="https://phptuts.github.io/vue-svelte-webcomponent-yt/">Vue Code</a></p>
+<h2 id="how-to-create-a-web-component-with-svelte">How to create a web component with Svelte</h2>
+<p>1. Go to the rollup.config.js file in the root of the project.</p>
+<p>2. Change the output.file to to the name of the webcomponent you want to export.</p>
+<pre><code class="language-js">output: {
+    sourcemap: true,
+    format: &quot;iife&quot;,
+    name: &quot;app&quot;,
+    file: &quot;public/build/count-btn.js&quot;,
+  },
+</code></pre>
+<p>3. Change change compiler options to this.</p>
+<pre><code class="language-js">svelte({
+      compilerOptions: {
+        // enable run-time checks when not in production
+        dev: !production,
+        customElement: true,
+      },
+    }),
+</code></pre>
+<p>4. Delete the css plugin below the svelte component.</p>
+<p>5. Go to main.js and delete all config in your app component.</p>
+<pre><code class="language-js">import App from &quot;./App.svelte&quot;;
+
+const app = new App();
+
+export default app;
+</code></pre>
+<p>6. Create the component you want to export in your App.svelte file. You will need to include the svelte:option component with tag prop equaling the name of your component.</p>
+<pre><code class="language-html">&lt;script&gt;
+  import { onMount } from &quot;svelte&quot;;
+  export let count = 0;
+
+  function onClick() {
+    count = +count + 1;
+  }
+  onMount(() =&gt; {
+    console.log(&quot;can use on mount&quot;);
+  });
+&lt;/script&gt;
+
+&lt;style&gt;
+  button {
+    width: 100px;
+    height: 100px;
+  }
+&lt;/style&gt;
+
+&lt;button on:click=&quot;{onClick}&quot;&gt;Count {count}&lt;/button&gt;
+
+&lt;svelte:options tag=&quot;count-btn&quot; /&gt;
+</code></pre>
+<p>7. Go you your index.html page and delete the css imports.</p>
+<p>8. Include your new component in a defered script tag.</p>
+<pre><code class="language-html">&lt;script defer src=&quot;build/count-btn.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>9. Use your component in your html</p>
+<pre><code class="language-html">&lt;count-btn count=&quot;30&quot;&gt;&lt;/count-btn&gt;
+</code></pre>
+<p>10. Run npm run build</p>
+<p>11. Run npm start to see your component.</p>
+<h3 id="note">Note</h3>
+<p>Everytime you want to see a change you will have to run npm run build. There is probably a way you can watch the file.</p>
+<h2 id="how-to-use-svelte-component-in-angular">How to use svelte component in Angular</h2>
+<p>1. Create a folder in your src called js and copy the web component.js files there.</p>
+<p>2. Go to your angular.json file and include the javascript. It's will be under project -&gt; architect -&gt; build -&gt; scripts.</p>
+<pre><code class="language-js">&quot;scripts&quot;: [
+              &quot;src/js/count-btn.js&quot;
+            ]
+</code></pre>
+<p>3. Go to src -&gt; app -&gt; app.module.ts and add a custom schema to the ng module.</p>
+<pre><code class="language-typescript">import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from &quot;@angular/core&quot;;
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule {}
+</code></pre>
+<p>3. Go to your app.compoenent.html file and insert your web component.</p>
+<pre><code class="language-html">&lt;count-btn count=&quot;20&quot;&gt;&lt;/count-btn&gt;
+</code></pre>
+<h2 id="how-to-use-svelte-component-in-react">How to use svelte component in React</h2>
+<p>1. Copy the component js into the public folder.</p>
+<p>2. In the index.html file on the public folder include the js you copied with a defer attribute.</p>
+<pre><code class="language-html">&lt;script defer src=&quot;count-btn.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>3. Use the webcomponent in your App component.</p>
+<pre><code class="language-js">import &quot;./App.css&quot;;
+
+function App() {
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;h1&gt;Svelte Component in React App&lt;/h1&gt;
+      &lt;count-btn count=&quot;3&quot;&gt;&lt;/count-btn&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+<h2 id="how-to-use-svelte-component-in-vue">How to use svelte component in Vue</h2>
+<p>1. Copy the component js into the public folder.</p>
+<p>2. In the index.html file on the public folder include the js you copied with a defer attribute.</p>
+<pre><code class="language-html">&lt;script defer src=&quot;count-btn.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>3. Use the component in any of the .vue component files.</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div class=&quot;hello&quot;&gt;
+    &lt;h1&gt;Svelte Component in Vue app&lt;/h1&gt;
+    &lt;count-btn count=&quot;23&quot;&gt;&lt;/count-btn&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../flappybird/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Flappy Bird" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Flappy Bird
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../firebase-recipe-site/login/" class="md-footer__link md-footer__link--next" aria-label="Next: SvelteKit Firebase Auth" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              SvelteKit Firebase Auth
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.76f349be.min.js"></script>
+      
+    
+  </body>
+</html>

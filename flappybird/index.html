@@ -1,0 +1,1282 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://phptuts.github.io/svelte-docs/flappybird/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+    
+    
+      
+        <title>Flappy Bird - Svelte Tutorials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-build-a-flappy-bird-game-in-svelte-with-typescript" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Svelte Tutorials" class="md-header__button md-logo" aria-label="Svelte Tutorials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Svelte Tutorials
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Flappy Bird
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Svelte Tutorials" class="md-nav__button md-logo" aria-label="Svelte Tutorials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Svelte Tutorials
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Flappy Bird
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Flappy Bird
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#youtube-video" class="md-nav__link">
+    Youtube Video
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-demo" class="md-nav__link">
+    Final Demo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-demo" class="md-nav__link">
+    Other Demo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    Steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webcomponents/" class="md-nav__link">
+        Web Components
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firebase-recipe-site/login/" class="md-nav__link">
+        SvelteKit Firebase Auth
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firebase-recipe-site/ssr/" class="md-nav__link">
+        SvelteKit Firebase SSR
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firebase-recipe-site/form/" class="md-nav__link">
+        SvelteKit Forms
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firebase-recipe-site/upload-picture/" class="md-nav__link">
+        SvelteKit FireStorage
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#youtube-video" class="md-nav__link">
+    Youtube Video
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-demo" class="md-nav__link">
+    Final Demo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-demo" class="md-nav__link">
+    Other Demo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    Steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="how-to-build-a-flappy-bird-game-in-svelte-with-typescript">How to build a flappy bird game in svelte with typescript</h1>
+<h2 id="youtube-video">Youtube Video</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nhrYBoVI8pQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="final-demo">Final Demo</h2>
+<p><a href="https://github.com/phptuts/fb-yt">Demo</a></p>
+<p><a href="https://phptuts.github.io/fb-yt/">Code</a></p>
+<h2 id="other-demo">Other Demo</h2>
+<p><a href="https://phptuts.github.io/flappy-bird/">Demo</a></p>
+<p><a href="https://github.com/phptuts/flappy-bird/">Code</a></p>
+<h2 id="steps">Steps</h2>
+<p>1. Create the svelte project.</p>
+<pre><code class="language-bash">npx degit sveltejs/template .
+</code></pre>
+<p>2. Turn the project into a typescript project. (It will be nice to have interfaces)</p>
+<pre><code class="language-bash">node scripts/setupTypeScript.js
+</code></pre>
+<p>3. Run npm install to install the dependencies.</p>
+<pre><code class="language-bash">npm install
+</code></pre>
+<p>4. Clean up the project</p>
+<ul>
+<li>Delete everything in the public/global.css</li>
+<li>Make all the links relative in the public/index.html</li>
+<li>Change the title in the index.html file to Svelte Flappy Bird</li>
+<li>Delete everything in our src/App.svelte file</li>
+</ul>
+<p>index.html file</p>
+<pre><code class="language-html">&lt;meta charset=&quot;utf-8&quot; /&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot; /&gt;
+
+&lt;title&gt;Svelte Flappy Bird&lt;/title&gt;
+
+&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; href=&quot;/favicon.png&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/global.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/build/bundle.css&quot; /&gt;
+
+&lt;script defer src=&quot;/build/bundle.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>5. Create a file name game.ts and copy the frame interface into file. This is will be used to render the game.</p>
+<pre><code class="language-typescript">export interface Frame {
+  gameOver: boolean;
+  gameStarted: boolean;
+  width: number;
+  height: number;
+  score: number;
+}
+</code></pre>
+<p>6. Create a game class. Is is what is used to generate the frames and is where all of our game logic will be stored. For now our game controller will take in a width and height value.</p>
+<pre><code class="language-typescript">export class GameController {}
+</code></pre>
+<p>7. Let's create a constructor that takes in width, height as public readonly variables. We'll also create private class variables that will store the frame and velocity.</p>
+<pre><code class="language-typescript">class GameController {
+  private frame: Frame;
+
+  private velocity = 0;
+
+  constructor(public readonly height = 800, public readonly width = 400) {}
+}
+</code></pre>
+<p>8. Create a method called newGame. This will save a new frame to the frame class variable and return the newly created frame. We don't want to start the game until the user presses a button so we'll default gameOver and gameStarted to false.</p>
+<pre><code class="language-typescript">export class GameController {
+  private frame: Frame;
+
+  private velocity = 0;
+
+  constructor(public readonly height = 800, public readonly width = 400) {}
+
+  public newGame() {
+    this.frame = {
+      score: 0,
+      width: this.width,
+      height: this.height,
+      gameOver: false,
+      gameStarted: false,
+    };
+
+    return this.frame;
+  }
+}
+</code></pre>
+<p>9. We'll use this create a game.svelte component to render the game onto the screen.</p>
+<p>Game.svelte</p>
+<pre><code class="language-html">&lt;script lang=&quot;ts&quot;&gt;
+  import { GameController } from &quot;./game&quot;;
+  const game = new GameController();
+  let frame = game.newGame();
+&lt;/script&gt;
+
+&lt;style&gt;
+  main {
+    position: relative;
+    border: solid black 1px;
+    overflow: hidden;
+    background-color: lightblue;
+  }
+&lt;/style&gt;
+
+&lt;main
+  style=&quot;width: {frame.width}px; height: {frame.height}px;&quot;
+  class=&quot;game&quot;
+&gt;&lt;/main&gt;
+</code></pre>
+<p>App.svelte</p>
+<pre><code class="language-html">&lt;script lang=&quot;ts&quot;&gt;
+  import Game from &quot;./Game.svelte&quot;;
+&lt;/script&gt;
+
+&lt;Game /&gt;
+</code></pre>
+<p>It should look like this.
+<img alt="step 9" src="../images/flappybird/step9.png" /></p>
+<p>10. Add interfaces for the pipes so we can start moving the pipes across the screen. Modify the frame frame to accept 2 pipes. A firstPipe and second Pipe.</p>
+<pre><code class="language-typescript">export interface Frame {
+  firstPipe: PipePair;
+  secondPipe: PipePair;
+  gameOver: boolean;
+  gameStarted: boolean;
+  width: number;
+  height: number;
+  score: number;
+}
+
+export interface PipePair {
+  topPipe: Pipe;
+  bottomPipe: Pipe;
+  show: boolean;
+  left: number;
+  width: number;
+}
+
+export interface Pipe {
+  top: number;
+  height: number;
+}
+</code></pre>
+<p>11. Modify the GameController contrustor to take in more pipe parameters.</p>
+<pre><code class="language-typescript">export class GameController {
+  private frame: Frame;
+
+  private velocity = 0;
+
+  constructor(
+    public readonly height = 800,
+    public readonly width = 400,
+    public readonly pipeWidth = 50,
+    public readonly pipeGap = 150,
+    public readonly minTopForTopPipe = 70,
+    public readonly maxTopForTopPipe = 350
+  ) {}
+
+  public newGame() {
+    this.frame = {
+      score: 0,
+      width: this.width,
+      height: this.height,
+      gameOver: false,
+      gameStarted: false,
+    };
+
+    return this.frame;
+  }
+}
+</code></pre>
+<p>12. Next create a private method to generate a random length of pipe between our minTopForTopPipe and maxTopForTopPipe.</p>
+<pre><code class="language-typescript">private randomYForTopPipe(): number {
+    return (
+      this.minTopForTopPipe +
+      (this.maxTopForTopPipe - this.minTopForTopPipe) * Math.random()
+    );
+  }
+</code></pre>
+<p>13. Using the function created previously we can now create a private method for creating a pipe. Show will determine if the pipe is visible on the screen.</p>
+<pre><code class="language-typescript">private createPipe(show: boolean): PipePair {
+    const height = this.randomYForTopPipe();
+
+    return {
+      topPipe: {
+        top: 0,
+        height,
+      },
+      bottomPipe: {
+        top: height + this.pipeGap,
+        height: this.height,
+      },
+      left: this.width - this.pipeWidth,
+      width: this.pipeWidth,
+      show,
+    };
+  }
+</code></pre>
+<p>14. Modify the new game function to create pipe objects. We only want one of the pipes visible to start.</p>
+<pre><code class="language-typescript">  public newGame() {
+    let firstPipe = this.createPipe(true);
+    let secondPipe = this.createPipe(false);
+
+    this.frame = {
+      firstPipe,
+      secondPipe,
+      score: 0,
+      width: this.width,
+      height: this.height,
+      gameOver: false,
+      gameStarted: false,
+    };
+
+    return this.frame;
+  }
+</code></pre>
+<p>15. Comment out the + this.pipeWidth in the create pipe method.</p>
+<pre><code class="language-typescript">private createPipe(show: boolean): PipePair {
+    const height = this.randomYForTopPipe();
+
+    return {
+      topPipe: {
+        top: 0,
+        height,
+      },
+      bottomPipe: {
+        top: height, // commnet when done + this.pipeGap,
+        height: this.height,
+      },
+      left: this.width - this.pipeWidth, // delete line after testing
+      //left: this.width,  uncomment this line after testing
+      width: this.pipeWidth,
+      show,
+    };
+  }
+</code></pre>
+<p>16. Create a pipe component that takes in a PipePair and renders it to the screen.</p>
+<pre><code class="language-html">&lt;script lang=&quot;ts&quot;&gt;
+  import type { PipePair } from &quot;./game&quot;;
+  export let pipe: PipePair;
+&lt;/script&gt;
+
+&lt;style&gt;
+  .pipe {
+    position: absolute;
+    background-color: palegreen;
+  }
+&lt;/style&gt;
+
+{#if pipe.show }
+&lt;section
+  style=&quot;left: {pipe.left}px; top: {pipe.topPipe.top}px; width: {pipe.width}px; height: {pipe.topPipe.height}px;&quot;
+  class=&quot;top-pipe pipe&quot;
+&gt;&lt;/section&gt;
+&lt;section
+  style=&quot;left: {pipe.left}px; top: {pipe.bottomPipe.top}px; width: {pipe.width}px; height: {pipe.bottomPipe.height}px;&quot;
+  class=&quot;top-bottom pipe&quot;
+&gt;&lt;/section&gt;
+{/if}
+</code></pre>
+<p>18. Create 2 instances of the pipe component and use the frame to pass the pipe pair to them. Refresh page and make sure pipe's height changes. Besure to delete the testing code.</p>
+<pre><code class="language-html">&lt;main style=&quot;width: {frame.width}px; height: {frame.height}px;&quot; class=&quot;game&quot;&gt;
+  &lt;Pipe pipe=&quot;{frame.firstPipe}&quot; /&gt;
+  &lt;Pipe pipe=&quot;{frame.secondPipe}&quot; /&gt;
+&lt;/main&gt;
+</code></pre>
+<p><img alt="game pic" src="../images/flappybird/step18.png" /></p>
+<p>19. Next let's make the pipe move across the screen. We want the second pipe to start moving when the first pipe 70% through. We also want the pipe to disappear when the pipe has completely gone through the game.</p>
+<p>We'll also need to add parameters to our constructor, speed and generateNewPipePercent.</p>
+<p>To do this we'll create 2 functions. One called movePipe and one called nextFrame. nextFrame will generate a new frame with the pipe movement will move a pipe pair in x direction.</p>
+<pre><code class="language-typescript">
+ constructor(
+    public readonly height = 800,
+    public readonly width = 400,
+    public readonly pipeWidth = 50,
+    public readonly pipeGap = 150,
+    public readonly minTopForTopPipe = 70,
+    public readonly maxTopForTopPipe = 350,
+    public readonly generateNewPipePercent = 0.7,
+    public readonly speed = 1
+  ) {}
+
+  private movePipe(pipe: PipePair, otherPipe: PipePair) {
+    if (pipe.show &amp;&amp; pipe.left &lt;= this.pipeWidth * -1) {
+      pipe.show = false;
+      return pipe;
+    }
+
+    if (pipe.show) {
+      pipe.left -= this.speed;
+    }
+
+    if (
+      otherPipe.left &lt; this.width * (1 - this.generateNewPipePercent) &amp;&amp;
+      otherPipe.show &amp;&amp;
+      !pipe.show
+    ) {
+      return this.createPipe(true);
+    }
+
+    return pipe;
+  }
+
+  public nextFrame() {
+    this.frame.firstPipe = this.movePipe(
+      this.frame.firstPipe,
+      this.frame.secondPipe
+    );
+    this.frame.secondPipe = this.movePipe(
+      this.frame.secondPipe,
+      this.frame.firstPipe
+    );
+
+    return this.frame;
+  }
+</code></pre>
+<p>20. Next create a setInterval in the game component so that nextFrame is called 90 times a second. This will be done in the game component.</p>
+<pre><code class="language-typescript">setInterval(() =&gt; {
+  frame = game.nextFrame();
+}, 1000 / 90);
+</code></pre>
+<p><img alt="step 20" src="../images/flappybird/step20.gif" /></p>
+<p>21. Add ground height to the constructor</p>
+<pre><code class="language-typescript">export class GameController {
+  private frame: Frame;
+
+  private velocity = 0;
+
+  constructor(
+    public readonly height = 800,
+    public readonly width = 400,
+    public readonly pipeWidth = 50,
+    public readonly pipeGap = 150,
+    public readonly minTopForTopPipe = 70,
+    public readonly maxTopForTopPipe = 350,
+    public readonly generateNewPipePercent = 0.7,
+    public readonly speed = 1,
+    public readonly groundHeight = 20
+  ) {}
+</code></pre>
+<p>22. Add the ground interface to our game.ts file.</p>
+<pre><code class="language-typescript">export interface Ground {
+  height: number;
+}
+</code></pre>
+<p>23. Add ad it to the frame and fix our newGame function.</p>
+<pre><code class="language-typescript">public newGame() {
+    let firstPipe = this.createPipe(true);
+    let secondPipe = this.createPipe(false);
+
+    this.frame = {
+      firstPipe,
+      secondPipe,
+      score: 0,
+      width: this.width,
+      height: this.height,
+      gameOver: false,
+      gameStarted: false,
+      ground: {
+        height: this.groundHeight
+      }
+    };
+
+    return this.frame;
+  }
+</code></pre>
+<p>24. Next use it to render the ground of the svelte game. Add the ground style and use it to render a section at the bottom of the page.</p>
+<pre><code class="language-html">&lt;style&gt;
+    main {
+        position: relative;
+        border: solid black 1px;
+        overflow: hidden;
+        background-color: lightblue;
+    }
+    #ground {
+        background-color: brown;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+&lt;style&gt;
+</code></pre>
+<pre><code class="language-html">...
+&lt;section style=&quot;height: {frame.ground.height}px;&quot; id=&quot;ground&quot; &gt;&lt;/section&gt;
+&lt;/main&gt;
+</code></pre>
+<p><img alt="step24" src="../images/flappybird/step24.png" /></p>
+<p>25. Add the bird interface to the game.ts</p>
+<pre><code class="language-typescript">export interface Bird {
+  top: number;
+  left: number;
+  size: number;
+}
+</code></pre>
+<p>26. Next add birdX, gravity, jumpVelocity, birdSize, and slowVelocityBy to the game controller consturctor.</p>
+<pre><code class="language-typescript">constructor(
+    public readonly height = 800,
+    public readonly width = 400,
+    public readonly pipeWidth = 50,
+    public readonly pipeGap = 150,
+    public readonly minTopForTopPipe = 70,
+    public readonly maxTopForTopPipe = 350,
+    public readonly generateNewPipePercent = 0.7,
+    public readonly speed = 1,
+    public readonly groundHeight = 20,
+    public readonly birdX = 40,
+    public readonly birdSize = 20,
+    public readonly gravity = 1.5,
+    public readonly jumpVelocity = 10,
+    public readonly slowVelocityBy = 0.3,
+
+  ) {}
+</code></pre>
+<p>27. Add the bird to Frame interface.</p>
+<pre><code class="language-typescript">export interface Frame {
+  firstPipe: PipePair;
+  secondPipe: PipePair;
+  ground: Ground;
+  bird: Bird;
+  gameOver: boolean;
+  gameStarted: boolean;
+  width: number;
+  height: number;
+  score: number;
+}
+</code></pre>
+<p>28. Fix the newGame function to include the bird.</p>
+<pre><code class="language-typescript">  public newGame() {
+    let firstPipe = this.createPipe(true);
+    let secondPipe = this.createPipe(false);
+
+    this.frame = {
+      firstPipe,
+      secondPipe,
+      score: 0,
+      width: this.width,
+      height: this.height,
+      gameOver: false,
+      gameStarted: false,
+      ground: {
+        height: this.groundHeight,
+      },
+      bird: {
+        left: this.birdX,
+        top: this.height / 2 - this.birdSize / 2,
+        size: this.birdSize,
+      },
+    };
+
+    return this.frame;
+  }
+</code></pre>
+<p>29. Add a bird svelte component to the game.</p>
+<p>Bird Svelte</p>
+<pre><code class="language-html">&lt;script lang=&quot;ts&quot;&gt;
+  import type { Bird } from &quot;./game&quot;;
+  export let bird: Bird;
+&lt;/script&gt;
+
+&lt;style&gt;
+  #bird {
+    border: solid black 1px;
+    background-color: yellow;
+    position: absolute;
+  }
+&lt;/style&gt;
+
+&lt;section
+  style=&quot;width: {bird.size}px; height: {bird.size}px; top: {bird.top}px; left: {bird.left}px;&quot;
+  id=&quot;bird&quot;
+&gt;&lt;/section&gt;
+</code></pre>
+<p>Game.svelte</p>
+<pre><code class="language-html">&lt;main style=&quot;width: {frame.width}px; height: {frame.height}px;&quot; class=&quot;game&quot;&gt;
+  &lt;Bird bird=&quot;{frame.bird}&quot; /&gt;
+  &lt;Pipe pipe=&quot;{frame.firstPipe}&quot; /&gt;
+  &lt;Pipe pipe=&quot;{frame.secondPipe}&quot; /&gt;
+  &lt;section style=&quot;height: {frame.ground.height}px;&quot; id=&quot;ground&quot;&gt;&lt;/section&gt;
+&lt;/main&gt;
+</code></pre>
+<p><img alt="step29" src="../images/flappybird/step29.png" /></p>
+<p>30. Add a function to the game controller called jump that will set the velocity to jumpVelocity if it's zero.</p>
+<pre><code class="language-typescript">public jump() {
+    if (this.velocity &lt;= 0) {
+      this.velocity += this.jumpVelocity;
+    }
+  }
+</code></pre>
+<p>31. Next create a window:svelte element and hook up a function to click event that will call someone clicks in the window.</p>
+<pre><code class="language-html">&lt;script lang=&quot;ts&quot;&gt;
+  ...
+  function jump() {
+      game.jump();
+  }
+  ...
+&lt;/script&gt;
+&lt;svelte:window on:click=&quot;{jump}&quot; /&gt;
+</code></pre>
+<p>32. Add gravity to the next nextFrame function so that we can test this out.</p>
+<pre><code class="language-typescript">  public nextFrame() {
+    this.frame.firstPipe = this.movePipe(
+      this.frame.firstPipe,
+      this.frame.secondPipe
+    );
+    this.frame.secondPipe = this.movePipe(
+      this.frame.secondPipe,
+      this.frame.firstPipe
+    );
+
+    // Gravity section
+    if (this.velocity &gt; 0) {
+      this.velocity -= this.slowVelocityBy;
+    }
+
+    this.frame.bird.top += Math.pow(this.gravity, 2) - this.velocity;
+
+    return this.frame;
+  }
+</code></pre>
+<p>33. Stop generating new frames if the game is over.</p>
+<pre><code class="language-typescript">public nextFrame() {
+    if (this.frame.gameOver || !this.frame.gameStarted) {
+      return this.frame;
+    }
+
+    this.frame.firstPipe = this.movePipe(
+      this.frame.firstPipe,
+      this.frame.secondPipe
+    );
+    this.frame.secondPipe = this.movePipe(
+      this.frame.secondPipe,
+      this.frame.firstPipe
+    );
+
+    if (this.velocity &gt; 0) {
+      this.velocity -= this.slowVelocityBy;
+    }
+
+    this.frame.bird.top += Math.pow(this.gravity, 2) - this.velocity;
+
+    return this.frame;
+  }
+</code></pre>
+<p>33. Add a start function to the game controller. This will create a game with game started.</p>
+<pre><code class="language-typescript">public start() {
+  this.newGame();
+  this.frame.gameStarted = true;
+  return this.frame;
+}
+</code></pre>
+<p>34. Add a button to start the game if the game has not been started.</p>
+<pre><code class="language-html">&lt;script&gt;
+  function startGame() {
+    frame = game.start();
+  }
+&lt;/script&gt;
+&lt;style&gt;
+  ... #init-screen {
+    user-select: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-family: monospace;
+  }
+  #init-screen h2 {
+    text-align: center;
+  }
+  #init-screen button {
+    font-family: monospace;
+    font-size: 16px;
+    border: none;
+    border-radius: none;
+    background-color: ghostwhite;
+    padding: 10px;
+    cursor: pointer;
+    outline: none;
+    transition: ease-in-out 0.2s font-size;
+    display: block;
+    margin: 0 auto;
+  }
+
+  #init-screen button:active,
+  #init-screen button:focus {
+    outline: none;
+    font-size: 15px;
+  }
+&lt;/style&gt;
+&lt;main style=&quot;width: {frame.width}px; height: {frame.height}px;&quot; class=&quot;game&quot;&gt;
+  &lt;section id=&quot;score&quot;&gt;{frame.score}&lt;/section&gt;
+  &lt;Bird bind:bird=&quot;{frame.bird}&quot; /&gt;
+  &lt;Pipe bind:pipe=&quot;{frame.firstPipe}&quot; /&gt;
+  &lt;Pipe bind:pipe=&quot;{frame.secondPipe}&quot; /&gt;
+  {#if frame.gameOver || !frame.gameStarted}
+  &lt;section id=&quot;init-screen&quot;&gt;
+    &lt;button on:click=&quot;{startGame}&quot;&gt;Start Game&lt;/button&gt;
+  &lt;/section&gt;
+  {/if}
+  &lt;section style=&quot;height: {frame.ground.height}px;&quot; id=&quot;ground&quot;&gt;&lt;/section&gt;
+&lt;/main&gt;
+</code></pre>
+<p><img alt="step34" src="../images/flappybird/step34.png" /></p>
+<p>35. Add if statement to make sure the bird has not hit the ground if it has set gameOver to true.</p>
+<pre><code class="language-typescript">  public nextFrame() {
+    if (this.frame.gameOver || !this.frame.gameStarted) {
+      return this.frame;
+    }
+
+    // Move Pipes
+    this.frame.firstPipe = this.movePipe(
+      this.frame.firstPipe,
+      this.frame.secondPipe
+    );
+    this.frame.secondPipe = this.movePipe(
+      this.frame.secondPipe,
+      this.frame.firstPipe
+    );
+
+    // Checking if bird hit the ground
+    if (
+      this.frame.bird.top &gt;=
+      this.height - this.groundHeight - this.birdSize
+    ) {
+      this.frame.bird.top = this.height - this.groundHeight - this.birdSize;
+      this.frame.gameOver = true;
+      return this.frame;
+    }
+    // End Check if bird hit ground
+
+    // Add gravity and velocity upward if
+    if (this.velocity &gt; 0) {
+      this.velocity -= this.slowVelocityBy;
+    }
+
+    this.frame.bird.top += Math.pow(this.gravity, 2) - this.velocity;
+    // End gravity and velocity upward if
+
+    return this.frame;
+  }
+</code></pre>
+<p>36. Check and see if the bird has collided with the pipe. checkPipe checks to see if the bird is between the pipes. Has Collided with pipe will see if the pipe is not between the pipe if it's visible.</p>
+<pre><code class="language-typescript">private checkPipe(left: number) {
+    return (
+      left &lt;= this.birdX + this.birdSize &amp;&amp; left + this.pipeWidth &gt;= this.birdX
+    );
+}
+
+private hasCollidedWithPipe() {
+    if (
+      this.frame.firstPipe.show &amp;&amp;
+      this.checkPipe(this.frame.firstPipe.left)
+    ) {
+      return !(
+        this.frame.bird.top &gt; this.frame.firstPipe.topPipe.height &amp;&amp;
+        this.frame.bird.top + this.birdSize &lt;
+          this.frame.firstPipe.bottomPipe.top
+      );
+    }
+
+    if (
+      this.frame.secondPipe.show &amp;&amp;
+      this.checkPipe(this.frame.secondPipe.left)
+    ) {
+      return !(
+        this.frame.bird.top &gt; this.frame.secondPipe.topPipe.height &amp;&amp;
+        this.frame.bird.top + this.birdSize &lt;
+          this.frame.secondPipe.bottomPipe.top
+      );
+    }
+
+    return false;
+  }
+</code></pre>
+<p>38. Use the hasCollidedWithPipe function in the nextFrame to see if the game needs to end.</p>
+<pre><code class="language-typescript">public nextFrame() {
+    if (this.frame.gameOver || !this.frame.gameStarted) {
+      return this.frame;
+    }
+
+    this.frame.firstPipe = this.movePipe(
+      this.frame.firstPipe,
+      this.frame.secondPipe
+    );
+    this.frame.secondPipe = this.movePipe(
+      this.frame.secondPipe,
+      this.frame.firstPipe
+    );
+
+    if (
+      this.frame.bird.top &gt;=
+      this.height - this.groundHeight - this.birdSize
+    ) {
+      this.frame.bird.top = this.height - this.groundHeight - this.birdSize;
+      this.frame.gameOver = true;
+      return this.frame;
+    }
+
+    // Checks if the pipe has collided with the bird
+    if (this.hasCollidedWithPipe()) {
+      this.frame.gameOver = true;
+      return this.frame;
+    }
+
+    if (this.velocity &gt; 0) {
+      this.velocity -= this.slowVelocityBy;
+    }
+
+    this.frame.bird.top += Math.pow(this.gravity, 2) - this.velocity;
+
+    return this.frame;
+  }
+</code></pre>
+<p>39. Check if the first or second pipe is equal to birdX and if so add one to the score.</p>
+<pre><code class="language-typescript">  public nextFrame() {
+    if (this.frame.gameOver || !this.frame.gameStarted) {
+      return this.frame;
+    }
+
+    this.frame.firstPipe = this.movePipe(
+      this.frame.firstPipe,
+      this.frame.secondPipe
+    );
+    this.frame.secondPipe = this.movePipe(
+      this.frame.secondPipe,
+      this.frame.firstPipe
+    );
+
+    if (
+      this.frame.bird.top &gt;=
+      this.height - this.groundHeight - this.birdSize
+    ) {
+      this.frame.bird.top = this.height - this.groundHeight - this.birdSize;
+      this.frame.gameOver = true;
+      return this.frame;
+    }
+
+    if (this.hasCollidedWithPipe()) {
+      this.frame.gameOver = true;
+      return this.frame;
+    }
+
+    if (this.velocity &gt; 0) {
+      this.velocity -= this.slowVelocityBy;
+    }
+
+    // Add score
+    if (this.frame.firstPipe.left + this.pipeWidth == this.birdX - this.speed) {
+      this.frame.score += 1;
+    }
+
+    // Add Score
+    if (
+      this.frame.secondPipe.left + this.pipeWidth ==
+      this.birdX - this.speed
+    ) {
+      this.frame.score += 1;
+    }
+
+    this.frame.bird.top += Math.pow(this.gravity, 2) - this.velocity;
+
+    return this.frame;
+  }
+</code></pre>
+<p>40. Display the score in the game.</p>
+<pre><code class="language-html">&lt;style&gt;
+  ... #score {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    z-index: 10;
+    padding: 5px;
+    font-family: cursive;
+    background-color: white;
+    user-select: none;
+  }
+&lt;/style&gt;
+&lt;main style=&quot;width: {frame.width}px; height: {frame.height}px;&quot; class=&quot;game&quot;&gt;
+  &lt;section id=&quot;score&quot;&gt;{frame.score}&lt;/section&gt;
+  &lt;Bird bird=&quot;{frame.bird}&quot; /&gt;
+  &lt;Pipe pipe=&quot;{frame.firstPipe}&quot; /&gt;
+  &lt;Pipe pipe=&quot;{frame.secondPipe}&quot; /&gt;
+  {#if frame.gameOver || !frame.gameStarted}
+  &lt;section id=&quot;init-screen&quot;&gt;
+    &lt;button on:click=&quot;{startGame}&quot;&gt;Start Game&lt;/button&gt;
+  &lt;/section&gt;
+  {/if}
+  &lt;section style=&quot;height: {frame.ground.height}px;&quot; id=&quot;ground&quot;&gt;&lt;/section&gt;
+&lt;/main&gt;
+</code></pre>
+<p><img alt="step40" src="../images/flappybird/step40.png" /></p>
+<p>41. Add the score to the end game screen.</p>
+<pre><code class="language-html">&lt;style&gt;
+  ... #init-screen h2 {
+    text-align: center;
+  }
+  ...;
+&lt;/style&gt;
+... {#if frame.gameOver || !frame.gameStarted}
+&lt;section id=&quot;init-screen&quot;&gt;
+  {#if frame.gameOver}
+  &lt;h2&gt;Game Over&lt;/h2&gt;
+  &lt;h2&gt;Score {frame.score}&lt;/h2&gt;
+  {/if}
+  &lt;button on:click=&quot;{startGame}&quot;&gt;Start Game&lt;/button&gt;
+&lt;/section&gt;
+{/if} ...
+</code></pre>
+<p><img alt="step41" src="../images/flappybird/step40.png" /></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../webcomponents/" class="md-footer__link md-footer__link--next" aria-label="Next: Web Components" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Web Components
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.76f349be.min.js"></script>
+      
+    
+  </body>
+</html>
