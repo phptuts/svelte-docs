@@ -7,11 +7,20 @@ nav:
   - SvelteKit Firebase SSR: firebase-recipe-site/ssr.md
   - SvelteKit Forms: firebase-recipe-site/form.md
   - SvelteKit FireStorage: firebase-recipe-site/upload-picture.md
+  - SvelteKit Navbar: firebase-recipe-site/navbar.md
 
 theme:
-  name: readthedocs
+  name: material
   highlightjs: true
-  hljs_languages: ["svelte", "javascript", "html", "css", "typescript"]
+  hljs_languages:
+    ['svelte', 'javascript', 'html', 'css', 'typescript', 'svelte']
+  features:
+    - content.code.annotate
+
 extra_css:
   - css/style.css
 site_url: https://phptuts.github.io/svelte-docs/
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      linenums: true
