@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://phptuts.github.io/svelte-docs/firebase-recipe-site/login/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
@@ -20,10 +20,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.802231af.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
         
       
     
@@ -112,14 +112,18 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -347,6 +351,21 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../navbar/" class="md-nav__link">
+        SvelteKit Navbar
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -452,9 +471,18 @@
 <li>It must happen in an on mount</li>
 <li>The firebase config is publicly available</li>
 </ul>
-<pre><code class="language-html">&lt;script&gt;
-    import firebase from 'firebase/app';
-    import 'firebase/auth';
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="k">import</span> <span class="nx">firebase</span> <span class="kr">from</span> <span class="s1">&#39;firebase/app&#39;</span><span class="p">;</span>
+    import &#39;firebase/auth&#39;;
     onMount(() =&gt; {
         const firebaseConfig = {
             // fill in your config
@@ -462,28 +490,42 @@
 
         firebase.initializeApp(firebaseConfig);
     })
-
-</code></pre>
+</code></pre></div>
+</td></tr></table>
 <h2 id="firebase-login-with-google">Firebase Login with google</h2>
 <ul>
 <li>Wrap in a try catch</li>
 <li>Error will occur if the user leaves the pageg so don't respond to all errors.</li>
 </ul>
-<pre><code class="language-html">&lt;script lang=&quot;ts&quot;&gt;
-  import { Row, Col } from &quot;sveltestrap&quot;;
-  import firebase from &quot;firebase/app&quot;;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;ts&quot;</span><span class="p">&gt;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">Row</span><span class="p">,</span> <span class="nx">Col</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;sveltestrap&quot;</span><span class="p">;</span>
+  <span class="k">import</span> <span class="nx">firebase</span> <span class="kr">from</span> <span class="s2">&quot;firebase/app&quot;</span><span class="p">;</span>
 
-  async function loginWithGoogle() {
-    try {
-      const provider = new firebase.auth.GoogleAuthProvider();
+  <span class="k">async</span> <span class="kd">function</span> <span class="nx">loginWithGoogle</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">provider</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">firebase</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">GoogleAuthProvider</span><span class="p">();</span>
 
-      await firebase.auth().signInWithPopup(provider);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-&lt;/script&gt;
-</code></pre>
+      <span class="k">await</span> <span class="nx">firebase</span><span class="p">.</span><span class="nx">auth</span><span class="p">().</span><span class="nx">signInWithPopup</span><span class="p">(</span><span class="nx">provider</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="firebase-authentication-listener-and-authstore">Firebase Authentication Listener and AuthStore</h2>
 <ul>
 <li>AuthStore stores the state of the user using the site.</li>
@@ -491,45 +533,75 @@
 <li>AuthStore uses typescript which helps with documentation.</li>
 </ul>
 <p>authStore.ts</p>
-<pre><code class="language-ts">import { writable } from &quot;svelte/store&quot;;
-import type firebase from &quot;firebase/app&quot;;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">writable</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;svelte/store&quot;</span><span class="p">;</span>
+<span class="k">import</span> <span class="kr">type</span> <span class="nx">firebase</span> <span class="kr">from</span> <span class="s2">&quot;firebase/app&quot;</span><span class="p">;</span>
 
-const authStore = writable&lt;{
-  isLoggedIn: boolean;
-  user?: firebase.UserInfo;
-  firebaseControlled: boolean;
-}&gt;({
-  isLoggedIn: false,
-  firebaseControlled: false,
-});
+<span class="kd">const</span> <span class="nx">authStore</span> <span class="o">=</span> <span class="nx">writable</span><span class="o">&lt;</span><span class="p">{</span>
+  <span class="nx">isLoggedIn</span>: <span class="kt">boolean</span><span class="p">;</span>
+  <span class="nx">user?</span>: <span class="kt">firebase.UserInfo</span><span class="p">;</span>
+  <span class="nx">firebaseControlled</span>: <span class="kt">boolean</span><span class="p">;</span>
+<span class="p">}</span><span class="o">&gt;</span><span class="p">({</span>
+  <span class="nx">isLoggedIn</span>: <span class="kt">false</span><span class="p">,</span>
+  <span class="nx">firebaseControlled</span>: <span class="kt">false</span><span class="p">,</span>
+<span class="p">});</span>
 
-export default {
-  subscribe: authStore.subscribe,
-  set: authStore.set,
-};
-</code></pre>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">subscribe</span>: <span class="kt">authStore.subscribe</span><span class="p">,</span>
+  <span class="nx">set</span>: <span class="kt">authStore.set</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
 <p>firebase listener</p>
-<pre><code class="language-js">firebase.auth().onAuthStateChanged((user) =&gt; {
-  authStore.set({
-    isLoggedIn: user !== null,
-    user,
-    firebaseControlled: true,
-  });
-});
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">firebase</span><span class="p">.</span><span class="nx">auth</span><span class="p">().</span><span class="nx">onAuthStateChanged</span><span class="p">((</span><span class="nx">user</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">authStore</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
+    <span class="nx">isLoggedIn</span><span class="o">:</span> <span class="nx">user</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="nx">user</span><span class="p">,</span>
+    <span class="nx">firebaseControlled</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="protected-pages">Protected Pages</h2>
 <ul>
 <li>Use the authStore to boot people out of protected pageg.</li>
 <li>You don't need to wrap it in an onMount so it's ssr safe.</li>
 </ul>
-<pre><code class="language-ts">import authStore from &quot;../stores/authStore&quot;;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">authStore</span> <span class="kr">from</span> <span class="s2">&quot;../stores/authStore&quot;</span><span class="p">;</span>
 
-authStore.subscribe(async ({ isLoggedIn, firebaseControlled }) =&gt; {
-  if (!isLoggedIn &amp;&amp; firebaseControlled) {
-    await goto(&quot;/login&quot;);
-  }
-});
-</code></pre>
+<span class="nx">authStore</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="k">async</span> <span class="p">({</span> <span class="nx">isLoggedIn</span><span class="p">,</span> <span class="nx">firebaseControlled</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isLoggedIn</span> <span class="o">&amp;&amp;</span> <span class="nx">firebaseControlled</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="kr">goto</span><span class="p">(</span><span class="s2">&quot;/login&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+</td></tr></table>
                 
               
               
@@ -600,10 +672,10 @@ authStore.subscribe(async ({ isLoggedIn, firebaseControlled }) =&gt; {
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="../../assets/javascripts/bundle.756773cc.min.js"></script>
       
     
   </body>

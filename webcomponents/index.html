@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://phptuts.github.io/svelte-docs/webcomponents/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
@@ -20,10 +20,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.802231af.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
         
       
     
@@ -112,14 +112,18 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -394,6 +398,21 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firebase-recipe-site/navbar/" class="md-nav__link">
+        SvelteKit Navbar
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -541,61 +560,103 @@
 <h2 id="how-to-create-a-web-component-with-svelte">How to create a web component with Svelte</h2>
 <p>1. Go to the rollup.config.js file in the root of the project.</p>
 <p>2. Change the output.file to to the name of the webcomponent you want to export.</p>
-<pre><code class="language-js">output: {
-    sourcemap: true,
-    format: &quot;iife&quot;,
-    name: &quot;app&quot;,
-    file: &quot;public/build/count-btn.js&quot;,
-  },
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">output</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">sourcemap</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">format</span><span class="o">:</span> <span class="s2">&quot;iife&quot;</span><span class="p">,</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
+    <span class="nx">file</span><span class="o">:</span> <span class="s2">&quot;public/build/count-btn.js&quot;</span><span class="p">,</span>
+  <span class="p">},</span>
+</code></pre></div>
+</td></tr></table>
 <p>3. Change change compiler options to this.</p>
-<pre><code class="language-js">svelte({
-      compilerOptions: {
-        // enable run-time checks when not in production
-        dev: !production,
-        customElement: true,
-      },
-    }),
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">svelte</span><span class="p">({</span>
+      <span class="nx">compilerOptions</span><span class="o">:</span> <span class="p">{</span>
+        <span class="c1">// enable run-time checks when not in production</span>
+        <span class="nx">dev</span><span class="o">:</span> <span class="o">!</span><span class="nx">production</span><span class="p">,</span>
+        <span class="nx">customElement</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">}),</span>
+</code></pre></div>
+</td></tr></table>
 <p>4. Delete the css plugin below the svelte component.</p>
 <p>5. Go to main.js and delete all config in your app component.</p>
-<pre><code class="language-js">import App from &quot;./App.svelte&quot;;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">App</span> <span class="kr">from</span> <span class="s2">&quot;./App.svelte&quot;</span><span class="p">;</span>
 
-const app = new App();
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">App</span><span class="p">();</span>
 
-export default app;
-</code></pre>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">app</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
 <p>6. Create the component you want to export in your App.svelte file. You will need to include the svelte:option component with tag prop equaling the name of your component.</p>
-<pre><code class="language-html">&lt;script&gt;
-  import { onMount } from &quot;svelte&quot;;
-  export let count = 0;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">onMount</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;svelte&quot;</span><span class="p">;</span>
+  <span class="k">export</span> <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span>
 
-  function onClick() {
-    count = +count + 1;
-  }
-  onMount(() =&gt; {
-    console.log(&quot;can use on mount&quot;);
-  });
-&lt;/script&gt;
+  <span class="kd">function</span> <span class="nx">onClick</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">count</span> <span class="o">=</span> <span class="o">+</span><span class="nx">count</span> <span class="o">+</span> <span class="mf">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">onMount</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;can use on mount&quot;</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 
-&lt;style&gt;
-  button {
-    width: 100px;
-    height: 100px;
-  }
-&lt;/style&gt;
+<span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+  <span class="nt">button</span> <span class="p">{</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">px</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
 
-&lt;button on:click=&quot;{onClick}&quot;&gt;Count {count}&lt;/button&gt;
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">on:click</span><span class="o">=</span><span class="s">&quot;{onClick}&quot;</span><span class="p">&gt;</span>Count {count}<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
 
-&lt;svelte:options tag=&quot;count-btn&quot; /&gt;
-</code></pre>
+<span class="p">&lt;</span><span class="nt">svelte:options</span> <span class="na">tag</span><span class="o">=</span><span class="s">&quot;count-btn&quot;</span> <span class="p">/&gt;</span>
+</code></pre></div>
+</td></tr></table>
 <p>7. Go you your index.html page and delete the css imports.</p>
 <p>8. Include your new component in a defered script tag.</p>
-<pre><code class="language-html">&lt;script defer src=&quot;build/count-btn.js&quot;&gt;&lt;/script&gt;
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">defer</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;build/count-btn.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+</td></tr></table>
 <p>9. Use your component in your html</p>
-<pre><code class="language-html">&lt;count-btn count=&quot;30&quot;&gt;&lt;/count-btn&gt;
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">count-btn</span> <span class="na">count</span><span class="o">=</span><span class="s">&quot;30&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">count-btn</span><span class="p">&gt;</span>
+</code></pre></div>
+</td></tr></table>
 <p>10. Run npm run build</p>
 <p>11. Run npm start to see your component.</p>
 <h3 id="note">Note</h3>
@@ -603,57 +664,91 @@ export default app;
 <h2 id="how-to-use-svelte-component-in-angular">How to use svelte component in Angular</h2>
 <p>1. Create a folder in your src called js and copy the web component.js files there.</p>
 <p>2. Go to your angular.json file and include the javascript. It's will be under project -&gt; architect -&gt; build -&gt; scripts.</p>
-<pre><code class="language-js">&quot;scripts&quot;: [
-              &quot;src/js/count-btn.js&quot;
-            ]
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="s2">&quot;scripts&quot;</span><span class="o">:</span> <span class="p">[</span>
+              <span class="s2">&quot;src/js/count-btn.js&quot;</span>
+            <span class="p">]</span>
+</code></pre></div>
+</td></tr></table>
 <p>3. Go to src -&gt; app -&gt; app.module.ts and add a custom schema to the ng module.</p>
-<pre><code class="language-typescript">import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from &quot;@angular/core&quot;;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">CUSTOM_ELEMENTS_SCHEMA</span><span class="p">,</span> <span class="nx">NgModule</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&quot;@angular/core&quot;</span><span class="p">;</span>
 
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-})
-export class AppModule {}
-</code></pre>
+<span class="kd">@NgModule</span><span class="p">({</span>
+  <span class="nx">declarations</span><span class="o">:</span> <span class="p">[</span><span class="nx">AppComponent</span><span class="p">],</span>
+  <span class="nx">imports</span><span class="o">:</span> <span class="p">[</span><span class="nx">BrowserModule</span><span class="p">,</span> <span class="nx">AppRoutingModule</span><span class="p">],</span>
+  <span class="nx">providers</span><span class="o">:</span> <span class="p">[],</span>
+  <span class="nx">bootstrap</span><span class="o">:</span> <span class="p">[</span><span class="nx">AppComponent</span><span class="p">],</span>
+  <span class="nx">schemas</span><span class="o">:</span> <span class="p">[</span><span class="nx">CUSTOM_ELEMENTS_SCHEMA</span><span class="p">],</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div>
+</td></tr></table>
 <p>3. Go to your app.compoenent.html file and insert your web component.</p>
-<pre><code class="language-html">&lt;count-btn count=&quot;20&quot;&gt;&lt;/count-btn&gt;
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">count-btn</span> <span class="na">count</span><span class="o">=</span><span class="s">&quot;20&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">count-btn</span><span class="p">&gt;</span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="how-to-use-svelte-component-in-react">How to use svelte component in React</h2>
 <p>1. Copy the component js into the public folder.</p>
 <p>2. In the index.html file on the public folder include the js you copied with a defer attribute.</p>
-<pre><code class="language-html">&lt;script defer src=&quot;count-btn.js&quot;&gt;&lt;/script&gt;
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">defer</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;count-btn.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+</td></tr></table>
 <p>3. Use the webcomponent in your App component.</p>
-<pre><code class="language-js">import &quot;./App.css&quot;;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="s2">&quot;./App.css&quot;</span><span class="p">;</span>
 
-function App() {
-  return (
-    &lt;div className=&quot;App&quot;&gt;
-      &lt;h1&gt;Svelte Component in React App&lt;/h1&gt;
-      &lt;count-btn count=&quot;3&quot;&gt;&lt;/count-btn&gt;
-    &lt;/div&gt;
-  );
-}
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;App&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Svelte</span> <span class="nx">Component</span> <span class="ow">in</span> <span class="nx">React</span> <span class="nx">App</span><span class="o">&lt;</span><span class="err">/h1&gt;</span>
+      <span class="o">&lt;</span><span class="nx">count</span><span class="o">-</span><span class="nx">btn</span> <span class="nx">count</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="o">&gt;&lt;</span><span class="err">/count-btn&gt;</span>
+    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
 
-export default App;
-</code></pre>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
 <h2 id="how-to-use-svelte-component-in-vue">How to use svelte component in Vue</h2>
 <p>1. Copy the component js into the public folder.</p>
 <p>2. In the index.html file on the public folder include the js you copied with a defer attribute.</p>
-<pre><code class="language-html">&lt;script defer src=&quot;count-btn.js&quot;&gt;&lt;/script&gt;
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">defer</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;count-btn.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+</td></tr></table>
 <p>3. Use the component in any of the .vue component files.</p>
-<pre><code class="language-html">&lt;template&gt;
-  &lt;div class=&quot;hello&quot;&gt;
-    &lt;h1&gt;Svelte Component in Vue app&lt;/h1&gt;
-    &lt;count-btn count=&quot;23&quot;&gt;&lt;/count-btn&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hello&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Svelte Component in Vue app<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">count-btn</span> <span class="na">count</span><span class="o">=</span><span class="s">&quot;23&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">count-btn</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+</code></pre></div>
+</td></tr></table>
                 
               
               
@@ -724,10 +819,10 @@ export default App;
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="../assets/javascripts/bundle.756773cc.min.js"></script>
       
     
   </body>

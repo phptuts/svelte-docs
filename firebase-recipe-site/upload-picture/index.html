@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://phptuts.github.io/svelte-docs/firebase-recipe-site/upload-picture/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
@@ -20,10 +20,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.802231af.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
         
       
     
@@ -112,14 +112,18 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -333,6 +337,21 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../navbar/" class="md-nav__link">
+        SvelteKit Navbar
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -413,84 +432,165 @@
 </ul>
 <h2 id="steps">Steps</h2>
 <p>1. Import the firebase storage and extra protection for initialize the app a second time.</p>
-<pre><code class="language-typescript">await import(&quot;firebase/storage&quot;);
-if (fb.apps.length == 0) {
-  fb.initializeApp(firebaseConfig);
-}
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">await</span> <span class="k">import</span><span class="p">(</span><span class="s2">&quot;firebase/storage&quot;</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">fb</span><span class="p">.</span><span class="nx">apps</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mf">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">fb</span><span class="p">.</span><span class="nx">initializeApp</span><span class="p">(</span><span class="nx">firebaseConfig</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
 <p>2. Add File validator with yup.ts and import into add-recipe.svelte page.</p>
-<pre><code class="language-typescript">import * as yup from &quot;yup&quot;;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="o">*</span> <span class="kr">as</span> <span class="nx">yup</span> <span class="kr">from</span> <span class="s2">&quot;yup&quot;</span><span class="p">;</span>
 
-yup.addMethod(yup.mixed, &quot;fileMax&quot;, function (args) {
-  const { maxBytes, message } = args;
-  return this.test(&quot;fileMax&quot;, message, function (value) {
-    if (!value || value instanceof File === false) {
-      return true;
-    }
+<span class="nx">yup</span><span class="p">.</span><span class="nx">addMethod</span><span class="p">(</span><span class="nx">yup</span><span class="p">.</span><span class="nx">mixed</span><span class="p">,</span> <span class="s2">&quot;fileMax&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">maxBytes</span><span class="p">,</span> <span class="nx">message</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">args</span><span class="p">;</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;fileMax&quot;</span><span class="p">,</span> <span class="nx">message</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">value</span> <span class="o">||</span> <span class="nx">value</span> <span class="ow">instanceof</span> <span class="nx">File</span> <span class="o">===</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    return Math.round(value.size / 1024) &lt; maxBytes;
-  });
-});
+    <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">size</span> <span class="o">/</span> <span class="mf">1024</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nx">maxBytes</span><span class="p">;</span>
+  <span class="p">});</span>
+<span class="p">});</span>
 
-yup.addMethod(yup.mixed, &quot;fileFormat&quot;, function (args) {
-  const { formats, message } = args;
-  return this.test(&quot;fileFormat&quot;, message, function (value) {
-    if (!value || value instanceof File === false) {
-      return true;
-    }
-    return formats.includes(value.type);
-  });
-});
-</code></pre>
+<span class="nx">yup</span><span class="p">.</span><span class="nx">addMethod</span><span class="p">(</span><span class="nx">yup</span><span class="p">.</span><span class="nx">mixed</span><span class="p">,</span> <span class="s2">&quot;fileFormat&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">formats</span><span class="p">,</span> <span class="nx">message</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">args</span><span class="p">;</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;fileFormat&quot;</span><span class="p">,</span> <span class="nx">message</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">value</span> <span class="o">||</span> <span class="nx">value</span> <span class="ow">instanceof</span> <span class="nx">File</span> <span class="o">===</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">formats</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="kr">type</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+</td></tr></table>
 <p>3. Import it into add-recipe.svelte file</p>
-<pre><code class="language-ts">import &quot;../yup.ts.&quot;;
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="s2">&quot;../yup.ts.&quot;</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table>
 <p>4. Add it to our form schema.</p>
-<pre><code class="language-typescript">const schema = yup.object().shape({
-  title: yup.string().required().min(4).max(50),
-  description: yup.string().required().min(10).max(1000),
-  ingredients: yup
-    .array()
-    .min(1)
-    .max(10)
-    .of(
-      yup.object().shape({
-        name: yup.string().required().min(2).max(10),
-        unit: yup.mixed().oneOf([&quot;none&quot;, &quot;ounces&quot;, &quot;cups&quot;, &quot;pounds&quot;]),
-        amount: yup.number().min(1).max(30000),
-      })
-    ),
-  mainPicture: yup
-    .mixed()
-    .required(&quot;Picture Required&quot;)
-    .fileMax({
-      maxBytes: 50000,
-      message: &quot;Max Image size is 50MB&quot;,
-    })
-    .fileFormat({
-      formats: [&quot;image/gif&quot;, &quot;image/jpeg&quot;, &quot;image/png&quot;],
-      message: &quot;Images can only be png, gif, jpg&quot;,
-    }),
-});
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">schema</span> <span class="o">=</span> <span class="nx">yup</span><span class="p">.</span><span class="nx">object</span><span class="p">().</span><span class="nx">shape</span><span class="p">({</span>
+  <span class="nx">title</span>: <span class="kt">yup.string</span><span class="p">().</span><span class="nx">required</span><span class="p">().</span><span class="nx">min</span><span class="p">(</span><span class="mf">4</span><span class="p">).</span><span class="nx">max</span><span class="p">(</span><span class="mf">50</span><span class="p">),</span>
+  <span class="nx">description</span>: <span class="kt">yup.string</span><span class="p">().</span><span class="nx">required</span><span class="p">().</span><span class="nx">min</span><span class="p">(</span><span class="mf">10</span><span class="p">).</span><span class="nx">max</span><span class="p">(</span><span class="mf">1000</span><span class="p">),</span>
+  <span class="nx">ingredients</span>: <span class="kt">yup</span>
+    <span class="p">.</span><span class="nx">array</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="mf">1</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">max</span><span class="p">(</span><span class="mf">10</span><span class="p">)</span>
+    <span class="p">.</span><span class="k">of</span><span class="p">(</span>
+      <span class="nx">yup</span><span class="p">.</span><span class="nx">object</span><span class="p">().</span><span class="nx">shape</span><span class="p">({</span>
+        <span class="nx">name</span>: <span class="kt">yup.string</span><span class="p">().</span><span class="nx">required</span><span class="p">().</span><span class="nx">min</span><span class="p">(</span><span class="mf">2</span><span class="p">).</span><span class="nx">max</span><span class="p">(</span><span class="mf">10</span><span class="p">),</span>
+        <span class="nx">unit</span>: <span class="kt">yup.mixed</span><span class="p">().</span><span class="nx">oneOf</span><span class="p">([</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;ounces&quot;</span><span class="p">,</span> <span class="s2">&quot;cups&quot;</span><span class="p">,</span> <span class="s2">&quot;pounds&quot;</span><span class="p">]),</span>
+        <span class="nx">amount</span>: <span class="kt">yup.number</span><span class="p">().</span><span class="nx">min</span><span class="p">(</span><span class="mf">1</span><span class="p">).</span><span class="nx">max</span><span class="p">(</span><span class="mf">30000</span><span class="p">),</span>
+      <span class="p">})</span>
+    <span class="p">),</span>
+  <span class="nx">mainPicture</span>: <span class="kt">yup</span>
+    <span class="p">.</span><span class="nx">mixed</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">required</span><span class="p">(</span><span class="s2">&quot;Picture Required&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">fileMax</span><span class="p">({</span>
+      <span class="nx">maxBytes</span>: <span class="kt">50000</span><span class="p">,</span>
+      <span class="nx">message</span><span class="o">:</span> <span class="s2">&quot;Max Image size is 50MB&quot;</span><span class="p">,</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">fileFormat</span><span class="p">({</span>
+      <span class="nx">formats</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;image/gif&quot;</span><span class="p">,</span> <span class="s2">&quot;image/jpeg&quot;</span><span class="p">,</span> <span class="s2">&quot;image/png&quot;</span><span class="p">],</span>
+      <span class="nx">message</span><span class="o">:</span> <span class="s2">&quot;Images can only be png, gif, jpg&quot;</span><span class="p">,</span>
+    <span class="p">}),</span>
+<span class="p">});</span>
+</code></pre></div>
+</td></tr></table>
 <p>5. Add mainPicture to the default value.</p>
-<pre><code class="language-typescript">
-// ...
-initialValues: {
-      title: &quot;&quot;,
-      description: &quot;&quot;,
-      ingredients: [
-        {
-          name: &quot;&quot;,
-          units: &quot;none&quot;,
-          amount: 1,
-        },
-      ],
-      mainPicture: null
-    },
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// ...</span>
+<span class="nx">initialValues</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nx">description</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nx">ingredients</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="nx">units</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+          <span class="nx">amount</span>: <span class="kt">1</span><span class="p">,</span>
+        <span class="p">},</span>
+      <span class="p">],</span>
+      <span class="nx">mainPicture</span>: <span class="kt">null</span>
+    <span class="p">},</span>
+</code></pre></div>
+</td></tr></table>
 <p>6. Add a form field. We updating the field with the file and not the just the value because we want the validation to validate the file.</p>
-<pre><code class="language-svelte">&lt;Row&gt;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&lt;Row&gt;
   &lt;Col&gt;
     &lt;FormGroup&gt;
       &lt;Label for=&quot;title&quot;&gt;Main Picture&lt;/Label&gt;
@@ -507,59 +607,109 @@ initialValues: {
     &lt;/FormGroup&gt;
   &lt;/Col&gt;
 &lt;/Row&gt;
-
-</code></pre>
+</code></pre></div>
+</td></tr></table>
 <p>7. Change the recipe form type to accept and file</p>
-<pre><code class="language-ts">export type RecipeForm = {
-  title: string;
-  mainPicture: File;
-  description: string;
-  ingredients: Ingredient[];
-};
-</code></pre>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="kr">type</span> <span class="nx">RecipeForm</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">title</span>: <span class="kt">string</span><span class="p">;</span>
+  <span class="nx">mainPicture</span>: <span class="kt">File</span><span class="p">;</span>
+  <span class="nx">description</span>: <span class="kt">string</span><span class="p">;</span>
+  <span class="nx">ingredients</span>: <span class="kt">Ingredient</span><span class="p">[];</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
 <p>8. Add the uploadFile and getUrl functions</p>
-<pre><code class="language-ts">const uploadFile = async (recipeId: string, userId: string, pic: File) =&gt; {
-  const mainPicturePath = `/${userId}/${recipeId}.${pic.name.split(&quot;.&quot;).pop()}`;
-  const storage = firebase.storage();
-  const ref = storage.ref(mainPicturePath);
-  await ref.put(pic);
-  return mainPicturePath;
-};
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">uploadFile</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">recipeId</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">userId</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">pic</span>: <span class="kt">File</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">mainPicturePath</span> <span class="o">=</span> <span class="sb">`/</span><span class="si">${</span><span class="nx">userId</span><span class="si">}</span><span class="sb">/</span><span class="si">${</span><span class="nx">recipeId</span><span class="si">}</span><span class="sb">.</span><span class="si">${</span><span class="nx">pic</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">).</span><span class="nx">pop</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">storage</span> <span class="o">=</span> <span class="nx">firebase</span><span class="p">.</span><span class="nx">storage</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">ref</span> <span class="o">=</span> <span class="nx">storage</span><span class="p">.</span><span class="nx">ref</span><span class="p">(</span><span class="nx">mainPicturePath</span><span class="p">);</span>
+  <span class="k">await</span> <span class="nx">ref</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">pic</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">mainPicturePath</span><span class="p">;</span>
+<span class="p">};</span>
 
-export const getUrl = async (path: string) =&gt; {
-  const storage = firebase.storage();
-  return await storage.ref(path).getDownloadURL();
-};
-</code></pre>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">getUrl</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">path</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">storage</span> <span class="o">=</span> <span class="nx">firebase</span><span class="p">.</span><span class="nx">storage</span><span class="p">();</span>
+  <span class="k">return</span> <span class="k">await</span> <span class="nx">storage</span><span class="p">.</span><span class="nx">ref</span><span class="p">(</span><span class="nx">path</span><span class="p">).</span><span class="nx">getDownloadURL</span><span class="p">();</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
 <p>9. Modify the createRecipe function to save the picture.</p>
-<pre><code class="language-ts">export const createRecipe = async (recipeForm: RecipeForm, userId: string) =&gt; {
-  const recipe: Recipe = {
-    title: recipeForm.title,
-    description: recipeForm.description,
-    ingredients: recipeForm.ingredients,
-    userId,
-    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
-  };
-  const db = await firestore();
-  const recipeRef = await db.collection(&quot;recipes&quot;).add(recipe);
-  const path = await uploadFile(recipeRef.id, userId, recipeForm.mainPicture);
-  const url = await getUrl(path);
-  recipeRef.update(&quot;picture&quot;, url);
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">createRecipe</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">recipeForm</span>: <span class="kt">RecipeForm</span><span class="p">,</span> <span class="nx">userId</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">recipe</span>: <span class="kt">Recipe</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">title</span>: <span class="kt">recipeForm.title</span><span class="p">,</span>
+    <span class="nx">description</span>: <span class="kt">recipeForm.description</span><span class="p">,</span>
+    <span class="nx">ingredients</span>: <span class="kt">recipeForm.ingredients</span><span class="p">,</span>
+    <span class="nx">userId</span><span class="p">,</span>
+    <span class="nx">createdAt</span>: <span class="kt">firebase.firestore.FieldValue.serverTimestamp</span><span class="p">(),</span>
+    <span class="nx">updatedAt</span>: <span class="kt">firebase.firestore.FieldValue.serverTimestamp</span><span class="p">(),</span>
+  <span class="p">};</span>
+  <span class="kd">const</span> <span class="nx">db</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">firestore</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="nx">recipeRef</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">db</span><span class="p">.</span><span class="nx">collection</span><span class="p">(</span><span class="s2">&quot;recipes&quot;</span><span class="p">).</span><span class="nx">add</span><span class="p">(</span><span class="nx">recipe</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">uploadFile</span><span class="p">(</span><span class="nx">recipeRef</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">userId</span><span class="p">,</span> <span class="nx">recipeForm</span><span class="p">.</span><span class="nx">mainPicture</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">getUrl</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+  <span class="nx">recipeRef</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="s2">&quot;picture&quot;</span><span class="p">,</span> <span class="nx">url</span><span class="p">);</span>
 
-  return recipeRef;
-};
-</code></pre>
+  <span class="k">return</span> <span class="nx">recipeRef</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+</td></tr></table>
 <p>10. Try saving and notice it fails. It fails because we don't all the collection to be updated. Update your firebase storage rule and firestore rules to fix this.</p>
 <p>Firestore</p>
-<pre><code>match /recipes/{document=**} {
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>match /recipes/{document=**} {
       allow read: if true;
       allow create: if request.auth != null;
       allow update: if request.auth != null &amp;&amp; request.auth.uid == resource.data.userId;
     }
-</code></pre>
+</code></pre></div>
+</td></tr></table>
 <p>Firestorage</p>
-<pre><code>rules_version = '2';
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>rules_version = &#39;2&#39;;
 service firebase.storage {
   match /b/{bucket}/o {
     match /{allPaths=**} {
@@ -570,7 +720,8 @@ service firebase.storage {
     }
   }
 }
-</code></pre>
+</code></pre></div>
+</td></tr></table>
                 
               
               
@@ -605,6 +756,21 @@ service firebase.storage {
         </a>
       
       
+        
+        <a href="../navbar/" class="md-footer__link md-footer__link--next" aria-label="Next: SvelteKit Navbar" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              SvelteKit Navbar
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
     </nav>
   
   <div class="md-footer-meta md-typeset">
@@ -626,10 +792,10 @@ service firebase.storage {
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="../../assets/javascripts/bundle.756773cc.min.js"></script>
       
     
   </body>
