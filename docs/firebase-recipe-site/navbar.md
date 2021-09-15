@@ -1,15 +1,11 @@
 # Sveltekit Bootstrap Nav bar
 
-<!-- Timestamps
+<iframe width="560" height="315" src="https://www.youtube.com/embed/729OmHRvh8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-00:00 NavBar Creation
-00:50 NavBar include in layout
-01:41 NavBar Mobile Nav Toggle
-03:03 Dynamic Login & Logout Links
-06:00 Login Page Redirect to home
-08:00 Unsubscribing from authstore
-08:48 Remove Logout Button
-09:56 Outro -->
+## [Code PR](https://github.com/phptuts/firebase-sveltekit-recipe-site/pull/5/files)
+
+
+## Steps
 
 1\. Create the navbar in component in components/nav.svelte.  You will need to create a folder
 
@@ -303,3 +299,8 @@
 </Row>
 
 ```
+
+## Resources
+
+- [SvelteStrap NavBar](https://sveltestrap.js.org/?path=/story/components--navbar)
+- [SvelteKit Docs](https://kit.svelte.dev/docs) 
